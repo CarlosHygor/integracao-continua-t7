@@ -1,11 +1,14 @@
-name: CI Back-end
+name: CI Back-end branches
 
 on:
   push:
     branches:
-      - 'main'
+      - '**'
+      - '!main'
     paths:
       - 'sgcmapi/**'
+  workflow_dispatch:
+
 
 jobs:
   build:
@@ -20,3 +23,14 @@ jobs:
       - name: Maven Compile/Test
         working-directory: sgcmapi/
         run: mvn compile test
+  merge:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Merge Branch
+        uses: devmasx/merge-branch@1.4.0
+        with:
+          type: now
+          target_branch: main
+          github_token: ${{ github.token }}
