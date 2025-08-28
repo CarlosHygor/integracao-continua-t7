@@ -8,8 +8,14 @@ on:
       - 'sgcmapi/**'
   workflow_dispatch:
   pull_request:
+<<<<<<< HEAD
     paths: 
       - 'sgcmapi/**'
+=======
+    paths:
+      - 'sgcmapi/**'
+
+>>>>>>> 9e6dcef49c13ff6d78f074d6ff049addb191b887
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,19 +35,34 @@ jobs:
     if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v5
+<<<<<<< HEAD
       - name: Filtro de arquivo
         id: filtro
         uses: dorny/paths-filter@v3
         with: 
+=======
+      - name: Filtro de arquivos
+        id: filtro
+        uses: dorny/paths-filter@v3
+        with:
+>>>>>>> 9e6dcef49c13ff6d78f074d6ff049addb191b887
           filters: |
             java:
               - '**/*.java'
       - name: Merge
+<<<<<<< HEAD
         if: ${{ contains(steps.filtro.outputs.changes, 'java') }}
         uses: devmasx/merge-branch@v1.4.0
+=======
+        if: ${{ !contains(steps.filtro.outputs.changes, 'java') }}
+        uses: devmasx/merge-branch@1.4.0
+>>>>>>> 9e6dcef49c13ff6d78f074d6ff049addb191b887
         with:
           type: now
           target_branch: main
           github_token: ${{ github.token }}
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 9e6dcef49c13ff6d78f074d6ff049addb191b887
