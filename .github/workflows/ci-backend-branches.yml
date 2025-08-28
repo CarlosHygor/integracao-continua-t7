@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 name: CI Back-end branches
-=======
-name: CI Back-end (Branches)
->>>>>>> 9e6dcef49c13ff6d78f074d6ff049addb191b887
 
 on:
   push:
@@ -13,10 +9,6 @@ on:
       - 'sgcmapi/**'
   workflow_dispatch:
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 9e6dcef49c13ff6d78f074d6ff049addb191b887
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,11 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: Merge Branch
-<<<<<<< HEAD
         uses: devmasx/merge-branch@v1.4.0
-=======
-        uses: devmasx/merge-branch@1.4.0
->>>>>>> 9e6dcef49c13ff6d78f074d6ff049addb191b887
         with:
           type: now
           target_branch: main
